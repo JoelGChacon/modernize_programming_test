@@ -1,10 +1,10 @@
 :root {
   --top-space: 80px;
-  --mobile-width: 290px;
+  --mobile-min-width: 290px;
   --primary-page-color: #545253;
   --border-color-primary-gray: #cdcdcd;
   --border-color-secondary-gray: #928080;
-  --free-speech-red: #D50303;
+  --input-error-red: #D50303;
   --button-color-orange: #F6931D;
   --button-color-orange-secondary: #e78d06;
   --advertisment-green: #A0BC57;
@@ -64,36 +64,40 @@ header {
 /*================================== FORM ==================================*/
 main {
   padding: 15px;
+  height: 797px;
 }
 
 #form-section {
   margin: 0 auto;
-  width: var(--mobile-width, 290px);
-  height: 492px;
+  min-width: var(--mobile-min-width);
+  max-width: 670px;
   background-color: #FFFFFF;
+
+  /* for future use */
+  /* max-height: 492px; */
+  /* display: grid; */
+  /* place-content: end; */
 }
 
 #form-section__description {
-  height: 127px;
   width: 100%;
   background-color: var(--primary-page-color);
   color: #fff;
-  padding: 7px 15px 16px;
+  padding: 15px 22px;
   text-align: center;
   display: grid;
   place-items: center;;
 }
 
 #form-section__description div {
-  line-height: 2;
-  height: 96px;
-  width: 244.47px;
+  line-height: 1.902;
+  max-width: 330px;
   font-weight: 400;
   font-size: 17px;
 }
 
 #form-section__form-container { 
-  box-shadow: 0px 6px 13px 2px rgb(0 0 0 / 11%);
+  box-shadow: 0 7px 14px 0 #6EB7C2;
   padding: 15px 23px 22px;
   width: 100%;
   height: 365px;
@@ -129,8 +133,8 @@ form {
 .error,
 .error.form__input:hover,
 .error.form__input:focus{
-  border: 1px solid var(--free-speech-red);
-  box-shadow: 0 1px 0 0 var(--free-speech-red) inset;
+  border: 1px solid var(--input-error-red);
+  box-shadow: 0 1px 0 0 var(--input-error-red) inset;
 }
 
 .form__input:hover,
@@ -190,7 +194,8 @@ form input:nth-child(5) {
 /*================================== ADVERTISEMENT ==================================*/
 #advertisement {
   margin: 35px auto 0;
-  width: var(--mobile-width);
+  min-width: var(--mobile-min-width);
+  max-width: 404px;
   height: 235px;
 }
 
@@ -258,7 +263,6 @@ form input:nth-child(5) {
   #form-section__description div {
     line-height: 1.5;
     height: 48px;
-    width: 55%;
   }
 
   /*================================== ADVERTISEMENT ==================================*/
