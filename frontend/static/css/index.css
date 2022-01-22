@@ -34,6 +34,7 @@ body::after {
   bottom: 0;
   z-index: -99;
   background: linear-gradient(180deg, transparent, #ECF8FB, #EFEFEF, transparent);
+  position: fixed;
   background-size: 400% 400%;
   animation: background 5s ease infinite;
 }
