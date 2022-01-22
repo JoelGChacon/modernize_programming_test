@@ -4,10 +4,48 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modernize</title>
-  <link rel="stylesheet" href="./css/index.css">
+  <title>Modernize Lottery</title>
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Modernize your life</h1>
+
+  <header>
+    <img id="logo" src="./static/assets/images/Logo.png" alt="Modernize Logo" tabindex="0">
+  </header>
+
+  <main>
+    <div id="form-section">
+      <div id="form-section__description">
+        <div tabindex="0">Enter to win a 3rd generation Nest Learning Thermostat worth $249.</div>
+      </div>
+      <div id="form-section__form-container">
+        <form id="contact-info" aria-label="Contact information">
+          <input class="form__input" placeholder="Name" type="text" name="name" id="name" required tabindex="0" />
+          <input class="form__input" placeholder="City" type="text" name="city" id="city" tabindex="0" />
+          <input class="form__input" placeholder="State" type="text" name="state" id="state" tabindex="0" />
+          <input class="form__input" placeholder="Phone Number" inputmode="decimal" type="text" name="phone" id="phone" required tabindex="0" />
+          <input class="form__input" placeholder="Email Address" inputmode="email" type="email" name="email" id="email" required tabindex="0"/>
+        </form>
+        <button id="form__btn" type="submit" form="contact-info" tabindex="0">ENTER TO WIN</button>
+      </div>
+    </div>
+
+    <div id="advertisement">
+      <fieldset id="advertisement__border" tabindex="0">
+        <legend id="advertisement__action">EVEN MORE SAVINGS</legend>
+        <div id="advertisement__background">
+          <p id="advertisement__type">ADVERTORIAL</p>
+          <p id="advertisement__title">Tricks Homeowners Use to Eliminate Bills</p>
+          <p id="advertisement__description">
+            Surging energy bills, unpredictable weather patterns and dissatisfaction with utility companies have homeowners scrambling...
+            <a id="advertisement__link" href="https://www.google.com" target="_blank">READ MORE</a>
+          </p>
+        </div>
+      </fieldset>
+    </div>
+  </main>
+
+  <script src="./static/js/index.min.js" defer></script>
 </body>
 </html>
