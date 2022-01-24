@@ -6,12 +6,12 @@ const email = document.getElementById('email');
 const button = document.getElementById('form__btn');
 
 // Event Listeners
-user.addEventListener('input', e => nameInput(e));
-user.addEventListener('blur', e => nameBlur(e));
-phone.addEventListener('input', e => phoneInput(e));
-phone.addEventListener('blur', e => phoneBlur(e));
-email.addEventListener('input', e => emailInput(e));
-email.addEventListener('blur', e => emailBlur(e));
+user.addEventListener('input', e => nameValidate(e));
+user.addEventListener('blur', e => nameValidate(e));
+phone.addEventListener('input', e => phoneValidate(e));
+phone.addEventListener('blur', e => phoneValidate(e));
+email.addEventListener('input', e => emailValidate(e));
+email.addEventListener('blur', e => emailValidate(e));
 
 // Tracks validations
 const formValidationConfig = {
@@ -61,24 +61,16 @@ form.addEventListener('submit', async e => {
 /**
  * Validates the focused name.
  */
-function nameInput(e) {
-  const nameLength = e.target.value.length > 2;
-  validationStylesHandler(user, nameLength, 'name', e.type);
-}
-
-/**
- * Validates name.
- */
-function nameBlur(e) {
+function nameValidate(e) {
   const nameLength = e.target.value.length > 2;
   validationStylesHandler(user, nameLength, 'name', e.type);
 }
 
 /**
  * Mask phone number with: (XXX) XXX-XXXX
- * Validates the focused phone number.
+ * Validates phone number.
  */
-function phoneInput(e) {
+function phoneValidate(e) {
   const isPhoneNum = e.target.value.search(/\(\d{3}\)\s\d{3}-\d{4}/) !== -1;
   const x = e.target.value
     .replace(/\D/g, '')
@@ -91,25 +83,9 @@ function phoneInput(e) {
 }
 
 /**
- * Validates phone number.
- */
-function phoneBlur(e) {
-  const isPhoneNum = e.target.value.search(/\(\d{3}\)\s\d{3}-\d{4}/) !== -1;
-  validationStylesHandler(phone, isPhoneNum, 'phone', e.type);
-}
-
-/**
- * Validates focused email input.
- */
-function emailInput(e) {
-  const isEmail = e.target.value.search(/^\S+@\S+\.\S+$/) !== -1;
-  validationStylesHandler(email, isEmail, 'email', e.type);
-}
-
-/**
  * Validates email.
  */
-function emailBlur(e) {
+function emailValidate(e) {
   const isEmail = e.target.value.search(/^\S+@\S+\.\S+$/) !== -1;
   validationStylesHandler(email, isEmail, 'email', e.type);
 }
