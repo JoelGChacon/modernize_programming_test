@@ -59,34 +59,27 @@ form.addEventListener('submit', async e => {
 });
 
 /**
- * Validates that the focused name input.
+ * Validates the focused name.
  */
 function nameInput(e) {
-  if (e.target.value.length > 2) {
-    formValidationConfig.name = true;
-    user.classList.remove('error');
-  }
+  const nameLength = e.target.value.length > 2;
+  validationStylesHandler(user, nameLength, 'name', e.type);
 }
 
 /**
- * Validates name and handles validation styles.
+ * Validates name.
  */
 function nameBlur(e) {
-  if (e.target.value.length > 2) {
-    formValidationConfig.name = true;
-    user.classList.remove('error');
-  } else {
-    formValidationConfig.name = false;
-    user.classList.add('error');
-  }
+  const nameLength = e.target.value.length > 2;
+  validationStylesHandler(user, nameLength, 'name', e.type);
 }
 
 /**
  * Mask phone number with: (XXX) XXX-XXXX
- * Validates that the focused phone input.
+ * Validates the focused phone number.
  */
 function phoneInput(e) {
-  const isPhoneNum = e.target.value.search(/\(\d{3}\)\s\d{3}-\d{4}/);
+  const isPhoneNum = e.target.value.search(/\(\d{3}\)\s\d{3}-\d{4}/) !== -1;
   const x = e.target.value
     .replace(/\D/g, '')
     .match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
@@ -94,54 +87,42 @@ function phoneInput(e) {
     ? x[1]
     : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
 
-  if (isPhoneNum !== -1) {
-    formValidationConfig.phone = true;
-    phone.classList.remove('error');
-  }
+  validationStylesHandler(phone, isPhoneNum, 'phone', e.type);
 }
 
 /**
- * Validates phone number and handles validation styles.
+ * Validates phone number.
  */
 function phoneBlur(e) {
-  const isPhoneNum = e.target.value.search(/\(\d{3}\)\s\d{3}-\d{4}/);
-
-  if (isPhoneNum !== -1) {
-    formValidationConfig.phone = true;
-    phone.classList.remove('error');
-  } else {
-    formValidationConfig.phone = false;
-    phone.classList.add('error');
-  }
+  const isPhoneNum = e.target.value.search(/\(\d{3}\)\s\d{3}-\d{4}/) !== -1;
+  validationStylesHandler(phone, isPhoneNum, 'phone', e.type);
 }
 
 /**
- * Validates focused email input has no error.
- * This is ony a quick validation.
- * Emails should be validated in the backend.
+ * Validates focused email input.
  */
 function emailInput(e) {
-  const isEmmail = e.target.value.search(/^\S+@\S+\.\S+$/);
-
-  if (isEmmail !== -1) {
-    formValidationConfig.email = true;
-    email.classList.remove('error');
-  }
+  const isEmail = e.target.value.search(/^\S+@\S+\.\S+$/) !== -1;
+  validationStylesHandler(email, isEmail, 'email', e.type);
 }
 
 /**
- * Validates email and handles validation styles.
- * This is ony a quick validation.
- * Emails should be validated in the backend.
+ * Validates email.
  */
 function emailBlur(e) {
-  const isEmmail = e.target.value.search(/^\S+@\S+\.\S+$/);
+  const isEmail = e.target.value.search(/^\S+@\S+\.\S+$/) !== -1;
+  validationStylesHandler(email, isEmail, 'email', e.type);
+}
 
-  if (isEmmail !== -1) {
-    formValidationConfig.email = true;
-    email.classList.remove('error');
-  } else {
-    formValidationConfig.email = false;
-    email.classList.add('error');
+/**
+ * Handles validation styles.
+ */
+function validationStylesHandler(el, validity, input, type) {
+  if (!validity && type === 'blur') {
+    formValidationConfig[input] = false;
+    el.classList.add('error');
+  } else if (validity) {
+    formValidationConfig[input] = true;
+    el.classList.remove('error');
   }
 }
