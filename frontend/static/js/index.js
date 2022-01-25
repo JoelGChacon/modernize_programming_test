@@ -59,7 +59,7 @@ form.addEventListener('submit', async e => {
 });
 
 /**
- * Validates the focused name.
+ * Validates name.
  */
 function nameValidate(e) {
   const nameLength = e.target.value.length > 2;
