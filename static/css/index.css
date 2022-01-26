@@ -72,11 +72,6 @@ main {
   min-width: var(--mobile-min-width);
   max-width: 670px;
   background-color: #FFFFFF;
-
-  /* for future use */
-  /* max-height: 492px; */
-  /* display: grid; */
-  /* place-content: end; */
 }
 
 #form-section__description {
